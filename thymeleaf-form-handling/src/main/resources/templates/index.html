@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>Home</title>
+<link rel="stylesheet" th:href="@{/css/bootstrap.min.css}" />
+</head>
+<body>
+	<div class="container">
+		<div class="row mt-4">
+			<h3 class="col-md-10">All Employee</h3>
+			<a th:href="@{/add}" class="btn btn-primary col">Add</a>
+		</div>
+		<table class="table mt-4">
+			<tr>
+				<th>No</th>
+				<th>Name</th>
+				<th>Email</th>
+				<th>Salary</th>
+				<th>Gender</th>
+				<th>Position</th>
+				<th>Birthday</th>
+				<th>Married</th>
+				<th>Action</th>
+			</tr>
+			<tr th:each="emp,no : ${employees}">
+				<td th:text="${no.count}"></td>
+				<td th:text="${emp.name}"></td>
+				<td th:text="${emp.email}"></td>
+				<td th:text="${emp.salary}"></td>
+				<td th:text="${emp.gender}"></td>
+				<td th:text="${emp.position}"></td>
+				<td th:text="${emp.birthday}"></td>
+				<td th:text="${emp.married}"></td>
+				<td>
+					<a th:href="@{'/edit/' + ${emp.id}}">Edit</a> |
+					<a th:href="@{'/delete/' + ${emp.id}}" class="text-danger">Delete</a>
+				</td>
+			</tr>
+		</table>
+	</div>
+</body>
+</html>
